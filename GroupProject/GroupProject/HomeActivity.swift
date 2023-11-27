@@ -246,6 +246,7 @@ private var showItemDetails:Bool = false;
 private var isAlreadyDownloaded:Bool = false;
 private var showAddPage:Bool = false;
 
+
 private func dotAction(model:EachDataModel){
     if(clickedItemId != -1){
         clickedItemId = -1;
@@ -281,6 +282,9 @@ struct HomeActivity: View {
     @State var isListEmpty:Bool = true;
     @State var hasLoggedOut:Bool = false;
     @State var showApiPage:Bool = false;
+    @State var isDrawerOpen:Bool = false;
+    @State var isShowInfoCalled:Bool = false;
+    @State var isShowProfileCalled:Bool = false;
     
     private var dateFormatter:DateFormatter{
         let fmtr = DateFormatter();
@@ -646,19 +650,35 @@ struct HomeActivity: View {
                                     
                                     HStack{
                                         Spacer()
-                                        NavigationLink( destination: InfoActivity()){
-                                            VStack{
-                                                Image(systemName: "heart.fill")
-                                                    .foregroundColor(.red)
-                                                    .frame(width:48,height:48)
-                                            }
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .stroke(lineWidth:1)
-                                                    .stroke(Color.red)
-                                            )
-                                            .padding(.trailing, 12)
-                                        }
+                                        NavigationLink(
+                                            destination: InfoActivity(),
+                                            isActive: $isShowInfoCalled,
+                                            label: {
+                                                EmptyView()
+                                        })
+                                        
+                                        NavigationLink(
+                                            destination: MyProfilePage(),
+                                            isActive: $isShowProfileCalled,
+                                            label: {
+                                                EmptyView()
+                                        })
+                                        
+                                        //
+                                        
+//                                        NavigationLink( destination: InfoActivity()){
+//                                            VStack{
+//                                                Image(systemName: "heart.fill")
+//                                                    .foregroundColor(.red)
+//                                                    .frame(width:48,height:48)
+//                                            }
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 8)
+//                                                    .stroke(lineWidth:1)
+//                                                    .stroke(Color.red)
+//                                            )
+//                                            .padding(.trailing, 12)
+//                                        }
                                             
                                     }
                                     
@@ -687,20 +707,33 @@ struct HomeActivity: View {
                             .navigationBarTitle("Overview", displayMode: .inline)
                             .toolbar{
                                 
-                                ToolbarItem(placement:.navigationBarTrailing){
                                 
+                                ToolbarItem(placement:.navigationBarLeading){
+
                                     Button(action: {
-                                        let defaults = UserDefaults.standard;
-                                        defaults.removeObject(forKey: "my_user_id")
-                                        defaults.set(false, forKey: "am_i_logged_in");
-                                            hasLoggedOut = true;
+                                        isDrawerOpen = true
                                     },
                                     label: {
-                                        Image(systemName: "power")
+                                        Image(systemName: "line.horizontal.3")
                                             .foregroundColor(.red)
                                     })
-                                    
+
                                 }
+                                
+//                                ToolbarItem(placement:.navigationBarTrailing){
+//
+//                                    Button(action: {
+//                                        let defaults = UserDefaults.standard;
+//                                        defaults.removeObject(forKey: "my_user_id")
+//                                        defaults.set(false, forKey: "am_i_logged_in");
+//                                            hasLoggedOut = true;
+//                                    },
+//                                    label: {
+//                                        Image(systemName: "power")
+//                                            .foregroundColor(.red)
+//                                    })
+//
+//                                }
                             }
                         }//navigation-view
                         .listStyle(GroupedListStyle())
@@ -719,12 +752,43 @@ struct HomeActivity: View {
                         })
                         
                     }//vstack
+                    .disabled(isDrawerOpen)
+
                 }//else
+                
+                
+                MyNavDrawer(isOpen: isDrawerOpen){ data in
+                    
+                    isDrawerOpen = false;
+                    if(data == "log_out"){
+                        let defaults = UserDefaults.standard;
+                        defaults.removeObject(forKey: "my_user_id")
+                        defaults.set(false, forKey: "am_i_logged_in");
+                        hasLoggedOut = true;
+                    }
+                    else if(data == "show_profile"){
+                        let seconds = 0.500;
+                        DispatchQueue.main.asyncAfter(deadline: .now()+seconds){
+                            isShowProfileCalled.toggle();
+                        }
+                        
+                    }
+                    else if(data == "show_api" ){
+                        
+                        let seconds = 0.500;
+                        DispatchQueue.main.asyncAfter(deadline: .now()+seconds){
+                            isShowInfoCalled.toggle();
+                        }
+                       
+                    }
+                    
+                }
                 
             }//zstack
             .frame(minWidth:0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
             
         }//vstack
+        
         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .ignoresSafeArea(.container, edges: .top)
         .navigationBarHidden(true)
@@ -734,8 +798,117 @@ struct HomeActivity: View {
     
 }
 
+
+struct MyNavDrawer : View {
+    private let width = UIScreen.main.bounds.width * 0.8
+    private let height = UIScreen.main.bounds.height
+    
+    let isOpen: Bool
+    var onActionRequested: (String) -> Void
+    
+    var body: some View{
+        HStack{
+            VStack{
+                
+                
+                VStack{
+                    
+                    HStack{
+                    }
+                    .frame(height:60)
+                    
+                    Image("heart")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    Button(action:{ onActionRequested("show_profile") },label:{
+                        Text("Profile")
+                            .fontWeight(.semibold)
+                            .frame(minWidth:0,maxWidth: .infinity)
+                            .padding(10)
+                    })
+                    .foregroundColor(.black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1)
+                            .stroke(Color.black)
+                            
+                    )
+                    .cornerRadius(8)
+                    .padding(4)
+                    .padding([.horizontal],12)
+                    
+                    
+                    Button(action:{ onActionRequested("show_api") },label:{
+                        Text("Show info")
+                            .fontWeight(.semibold)
+                            .frame(minWidth:0,maxWidth: .infinity)
+                            .padding(10)
+                    })
+                    .foregroundColor(.black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1)
+                            .stroke(Color.black)
+                            
+                    )
+                    .cornerRadius(8)
+                    .padding(4)
+                    .padding([.horizontal],12)
+                    
+                    
+                    Button(action:{ onActionRequested("log_out") },label:{
+                        Text("LogOut")
+                            .fontWeight(.semibold)
+                            .frame(minWidth:0,maxWidth: .infinity)
+                            .padding(10)
+                    })
+                    .foregroundColor(.black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1)
+                            .stroke(Color.red)
+                            
+                    )
+                    .cornerRadius(8)
+                    .padding(4)
+                    .padding([.horizontal],12)
+                    
+                    Spacer()
+                    
+                    Button(action:{
+                        onActionRequested("close")
+                    }, label: {
+                        Image("heart")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30, alignment: .center)
+                            .padding(4)
+                    })
+                    
+                    HStack{}.frame(height:10)
+                    
+                }//vstack
+                .frame(width:self.width, height: self.height)
+                .background( Color(white: 0.9) )
+                .cornerRadius(8)
+                .offset(x:self.isOpen ? 0 : -self.width)
+                .animation(.default)
+                
+                Spacer()
+            }//vstack
+            .frame(width:self.width, height: self.height)
+            Spacer()
+        }//hstack
+        .allowsTightening(false)
+    }
+    
+}
+
 struct HomeActivity_Previews: PreviewProvider {
     static var previews: some View {
-        HomeActivity()
+        //HomeActivity()
+        MyNavDrawer(isOpen:true){data in}
     }
 }

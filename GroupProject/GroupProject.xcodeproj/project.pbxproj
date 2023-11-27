@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		40324E9F2B00E60E006396BC /* FullMapActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40324E9E2B00E60E006396BC /* FullMapActivity.swift */; };
+		40367F142B1309D80091A8FA /* profile_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 40367F132B1309D80091A8FA /* profile_lottie.json */; };
+		40C2874E2B0F5F8300408346 /* MyProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2874D2B0F5F8300408346 /* MyProfilePage.swift */; };
 		6812397D2AF58B51004E8684 /* InfoActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6812397C2AF58B50004E8684 /* InfoActivity.swift */; };
 		682202FC2AEA468F00163B0D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682202FB2AEA468F00163B0D /* LocationManager.swift */; };
 		6830DD082AD5E30100CCA9FA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD072AD5E30100CCA9FA /* FirebaseDatabase */; };
@@ -68,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		40324E9E2B00E60E006396BC /* FullMapActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapActivity.swift; sourceTree = "<group>"; };
+		40367F132B1309D80091A8FA /* profile_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile_lottie.json; sourceTree = "<group>"; };
+		40C2874D2B0F5F8300408346 /* MyProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePage.swift; sourceTree = "<group>"; };
 		6812397C2AF58B50004E8684 /* InfoActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoActivity.swift; sourceTree = "<group>"; };
 		682202FB2AEA468F00163B0D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		683846FB2AF67D1F00579273 /* lottie_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_loading.json; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				6899E7702AD4208A0017DC8F /* AddPage.swift */,
 				68B348A02AD2D1DA0063CECC /* ShowDetails.swift */,
 				68B348932AD2B0090063CECC /* HomeActivity.swift */,
+				40C2874D2B0F5F8300408346 /* MyProfilePage.swift */,
 				6812397C2AF58B50004E8684 /* InfoActivity.swift */,
 				683847002AF67EB700579273 /* FullInfoActivity.swift */,
 				68BD9F7E2AE64CF0006EC279 /* EditPage.swift */,
@@ -223,6 +228,7 @@
 		68F5FC552ADC0AEB00CA151B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				40367F132B1309D80091A8FA /* profile_lottie.json */,
 				68BD9F792AE64375006EC279 /* lottie_play.json */,
 				68BD76582ADD345A00BDD783 /* forgot_lottie.json */,
 				68BD76532ADD345000BDD783 /* sign_up_lottie.json */,
@@ -353,6 +359,7 @@
 			files = (
 				68B827CB2AD28B8E00306032 /* Preview Assets.xcassets in Resources */,
 				68BD76592ADD345A00BDD783 /* forgot_lottie.json in Resources */,
+				40367F142B1309D80091A8FA /* profile_lottie.json in Resources */,
 				68B827C82AD28B8E00306032 /* Assets.xcassets in Resources */,
 				689BD7F32ADC3E970072FFAB /* GoogleService-Info.plist in Resources */,
 				683846FC2AF67D2000579273 /* lottie_loading.json in Resources */,
@@ -399,6 +406,7 @@
 				68B938612AF60897002B1890 /* ImageCache.swift in Sources */,
 				68F5FC5F2ADC0BAD00CA151B /* LottieView.swift in Sources */,
 				6812397D2AF58B51004E8684 /* InfoActivity.swift in Sources */,
+				40C2874E2B0F5F8300408346 /* MyProfilePage.swift in Sources */,
 				68F5FC852ADC2E8F00CA151B /* LottieMessage.swift in Sources */,
 				68C30F642AEA869E00954D7B /* Status.swift in Sources */,
 				682202FC2AEA468F00163B0D /* LocationManager.swift in Sources */,
