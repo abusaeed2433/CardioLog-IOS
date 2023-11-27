@@ -14,11 +14,14 @@ struct SignUpPage: View {
     @State private var pass:String = "";
     @State private var passAgain:String = "";
     
-    @State private var alertMessage = "";
-    @State private var message = "Create account";
+    @State private var alertMessage:String?
+    @State private var message:String?
     @State private var showAlert = false;
     
     @State private var isProcessing:Bool = false;
+    @State private var isAlert:Bool = false;
+    
+    @Environment(\.presentationMode) var presentationMode
     
     func createAction(){
         if( !pass.elementsEqual(passAgain) ){
@@ -44,16 +47,28 @@ struct SignUpPage: View {
         
     }
     
+    private func onErrorDismissed(){
+        
+        if( message == "Account created successfully" ){
+            presentationMode.wrappedValue.dismiss(); // back to showdetails
+        }
+        
+        message = nil;
+        isAlert = false;
+    }
+    
     func createUserAccount(email:String, pass:String){
         isProcessing = true;
         Auth.auth()
             .createUser(withEmail: email, password: pass){ (result, error) in
                 isProcessing = false;
                 if error != nil {
-                    alertMessage = error?.localizedDescription ?? "";
-                    showAlert = true;
+                    isAlert = true;
+                    message = error?.localizedDescription ?? "";
+                    //showAlert = true;
                 }
                 else {
+                    isAlert = false;
                     message = "Account created successfully"
                 }
             }
@@ -62,7 +77,7 @@ struct SignUpPage: View {
     var body: some View {
         ZStack{
             VStack{
-                
+                /*
                 VStack{
                     Text(message)
                         .foregroundColor(.white)
@@ -73,6 +88,7 @@ struct SignUpPage: View {
                 }
                 .cornerRadius(12)
                 .background(Color.black)
+ */
                 
                 VStack{
                     LottieView(fileName: "sign_up_lottie")
@@ -111,6 +127,7 @@ struct SignUpPage: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.gray)
                         )
+                        .autocapitalization(.none)
                     
                     Text("Confirm password")
                         .frame(minHeight:24)
@@ -126,12 +143,14 @@ struct SignUpPage: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.gray)
                         )
-                        
+                        .autocapitalization(.none)
+                    
                 }//vstack
                 .padding(12)
+                
                 if showAlert{
                     VStack(alignment: .center){
-                        Text(alertMessage)
+                        Text(alertMessage!)
                             .font(.system(size: 10))
                             .foregroundColor(Color.red)
                             .frame(maxWidth:.infinity,alignment: .leading)
@@ -173,13 +192,65 @@ struct SignUpPage: View {
                 }//vstack
                 .padding(24)
                 .cornerRadius(12)
-                .background(Color.white)
+/*                .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.gray)
                 )
-                
+*/
             }//if-is-processing
+            
+            if(message != nil){
+                VStack{
+                    Spacer()
+                    GeometryReader{ gm in
+                        VStack{
+                            Spacer()
+                            VStack{
+                                
+                                Image(systemName: "info.circle")
+                                    .resizable()
+                                    .frame(width:32,height:32)
+                                    .foregroundColor(.black)
+                                    .padding(12)
+
+                                Text(message ?? "none")
+                                    .frame(minHeight:18)
+                                    .font(.custom("AmericanTypewriter", fixedSize:20) )
+                                    .foregroundColor( isAlert ? Color.red : Color.black)
+                                    .padding(.bottom,16)
+                                    .frame(minWidth:0,maxWidth: .infinity)
+                            
+                                HStack{
+                                    Button(action: onErrorDismissed, label: {
+                                        Text("OK")
+                                            .fontWeight(.semibold)
+                                            .padding(10)
+                                    })
+                                    .foregroundColor(.white)
+                                    .frame(width: gm.size.width * 0.6)
+                                    .background(isAlert ? Color.orange : Color.green)
+                                    .cornerRadius(24)
+                                    .padding([.horizontal],8)
+                                }//hstack
+                            }//vstack
+                            .padding(16)
+                            .background(Color.white)
+                            .cornerRadius(16)
+                            Spacer()
+                            
+                        }//vstack
+                    }//geometry
+                    
+                    Spacer()
+                    
+                }//vstack
+                .frame(minWidth:0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
+                .padding(36)
+                .background(Color.black.opacity(0.1))
+                
+            }//if- alert
+            
         }//vstack
         
     }//body

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "26DE0B53-2697-43D6-AF31-189A5D09879F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GroupProject/InfoActivity.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - cc398a17d02312c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of GroupProject.InfoActivity.allInfo : Swift.Array&lt;GroupProject.EachDisease&gt;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - 5db107e61f4f27f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.allInfo.getter : Swift.Array&lt;GroupProject.EachDisease&gt;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "138">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - 60df974381c0c3c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.allInfo.setter : Swift.Array&lt;GroupProject.EachDisease&gt;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - f4cb2649bf89bef7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.allInfo.modify : Swift.Array&lt;GroupProject.EachDisease&gt;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - 7bae7e66bcc57b6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.allInfo.modify : Swift.Array&lt;GroupProject.EachDisease&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - 2b89e3f3ed4c4eba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.$allInfo.getter : SwiftUI.Binding&lt;Swift.Array&lt;GroupProject.EachDisease&gt;&gt;"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "178">
+               </Location>
+               <Location
+                  uuid = "EB115F76-EB6C-43E4-A3F9-6FDA81B1F47F - 2963ed31b6910c55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GroupProject.InfoActivity.init() -&gt; GroupProject.InfoActivity"
+                  moduleName = "GroupProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuet_cse/Desktop/MyProjects/GroupProject/GroupProject/InfoActivity.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "160DBAFF-B46B-4179-9607-7762406BCEE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GroupProject/InfoActivity.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A83BF047-E874-4095-8887-C37045F1E5DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GroupProject/InfoActivity.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

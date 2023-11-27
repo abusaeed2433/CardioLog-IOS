@@ -278,7 +278,9 @@ struct HomeActivity: View {
     private let TOP_TIMER_HEIGHT:CGFloat = 28;
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect();
     
-    @State var dataNotLoadedOrEmpty:Bool = true;
+    @State var isListEmpty:Bool = true;
+    @State var hasLoggedOut:Bool = false;
+    @State var showApiPage:Bool = false;
     
     private var dateFormatter:DateFormatter{
         let fmtr = DateFormatter();
@@ -303,6 +305,7 @@ struct HomeActivity: View {
 
     @State private var filterValue:Bool = false;
     @State private var isAnyFilterApplied:Bool = false;
+    @State private var downloadRequested:Int64 = 54;
     
     private func getFormattedDate() -> String{
         let dateFormatter = DateFormatter();
@@ -372,12 +375,15 @@ struct HomeActivity: View {
         
         print("downlaod data called");
         
+        /*
         if(isAlreadyDownloaded) {
             //stepCount = stepCount + 1;
             //saveStepCount(stepCount: stepCount*5)
             return;
         }
+        */
         
+        isAlreadyDownloaded = false;
         startStepCounter();
         
         let ref = Database.database().reference()
@@ -385,7 +391,8 @@ struct HomeActivity: View {
         let defaults = UserDefaults.standard;
         let uid = defaults.string(forKey: "my_user_id");
         
-        ref.child("data").child(uid!).observe(DataEventType.value, with: { snapshot in
+        ref.child("data").child(uid!).observeSingleEvent(of: .value){ snapshot in
+        //ref.child("data").child(uid!).observe(DataEventType.value, with: { snapshot in
             
             allData.removeAll();
             allDataWithoutFilter.removeAll();
@@ -415,12 +422,9 @@ struct HomeActivity: View {
                     allDataWithoutFilter.append(model);
                 }
             }
-            applyFilter();
-            dataNotLoadedOrEmpty = allData.count == 0;
             isAlreadyDownloaded = true;
-            
-        })
-        
+            applyFilter();
+        }
     }
     
     private func filterAction(){
@@ -519,146 +523,204 @@ struct HomeActivity: View {
         
         allData = sortedData;
         
+        isListEmpty = allData.count == 0;
+        
     }
     
     var body: some View {
         VStack{
             
             ZStack{
-                /*
-                if(showItemDetails && clickedItem != nil){
-                    Text("show details");
+                
+                if(hasLoggedOut){
+                    LoginPage()
                 }
                 else{
-                 */
-                VStack{
-                    NavigationView{
-                        ZStack{
-                            
-                            VStack{
-                                HStack{
-                                    Text(timeNow)
-                                        .onReceive(timer){
-                                            _ in self.timeNow = dateFormatter.string(from: Date())
-                                        }
-                                        .frame(height:TOP_TIMER_HEIGHT)
-                                        .frame(minWidth:0,maxWidth: .infinity)
-                                        .padding(4)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .stroke(Color.gray)
-                                        )//text
-                                    
-                                    Button(action:filterAction,label:{
-                                        
-                                        NavigationLink(destination:FilterPage(filterValue: $filterValue)){
-                                            Text("Filter")
-                                                .fontWeight(.semibold)
-                                                .padding()
-                                        }//nav-link
-                                        
-                                    })
-                                    .frame(height:TOP_TIMER_HEIGHT)
-                                    .padding(4)
-                                    .foregroundColor(Color.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(
-                                                lineWidth: isAnyFilterApplied ? 2: 1
-                                            )
-                                            .stroke(
-                                                isAnyFilterApplied ? Color.red : Color.gray
-                                                )
-                                    )//butotn
-                                }//hstack
-                                .padding(8)
-                                Spacer()
-                                List{
-                                    ForEach(allData){item in
-                                        
-                                        EachDataLayout(model: item)
-                                            .frame(minWidth:0,maxWidth:.infinity)
-                                            .background(
-                                                
-                                                NavigationLink("",
-                                                    destination:
-                                                        ShowDetails(clickedItem: item)
-                                                )
-                                                .opacity(0)
-                                                
-                                            )//inside background
-                                        
-                                        
-                                        //.buttonStyle(PlainButtonStyle())
-                                        
-                                    }
-                                    .padding(0)
-                                    .frame(minWidth:0,maxWidth: .infinity)
-                                }//list
-                            }//vstack
-                            
-                            if -1 != clickedItemId{
-                                HStack(alignment:.center){
-                                    Spacer()
-                                    VStack{
-                                        Button(action:editAction,label:{
-                                            Text("Edit")
-                                                .padding(
-                                                    EdgeInsets(
-                                                        top:8,leading: 60,
-                                                        bottom: 16,trailing: 60
-                                                    )
-                                                )
-                                        })//button
-                                        .foregroundColor(.white)
-                                        .cornerRadius(4)
-                                    }//vstack
-                                    .background(Color.gray)
-                                    .cornerRadius(8)
-                                    Spacer()
-                                }//hstack
-                            }//pop-if
-                            
-                            if(dataNotLoadedOrEmpty){
+                    VStack{
+                        NavigationView{
+                            ZStack{
+                                
                                 VStack{
-                                    LottieView(fileName:"lottie_play")
-                                        .frame(width:300,height:250,alignment: .center)
-                                }
-                                .padding(4)
-                                .cornerRadius(12)
-                            }
-                            
-                            VStack{
-                                Spacer()
-                                Button(action:addClicked,label:{
-                                    NavigationLink(destination:AddPage()){
-                                        VStack{
-                                            Image("add")
-                                                .resizable()
+                                    HStack{
+                                        Text(timeNow)
+                                            .onReceive(timer){
+                                                _ in self.timeNow = dateFormatter.string(from: Date())
+                                            }
+                                            .frame(height:TOP_TIMER_HEIGHT)
+                                            .frame(minWidth:0,maxWidth: .infinity)
+                                            .padding(4)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 4)
+                                                    .stroke(Color.gray)
+                                            )//text
+                                        
+                                        Button(action:filterAction,label:{
+                                            
+                                            NavigationLink(destination:FilterPage(filterValue: $filterValue)){
+                                                Text("Filter")
+                                                    .fontWeight(.semibold)
+                                                    .padding()
+                                            }//nav-link
+                                            
+                                        })
+                                        .frame(height:TOP_TIMER_HEIGHT)
+                                        .padding(4)
+                                        .foregroundColor(Color.black)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .stroke(
+                                                    lineWidth: isAnyFilterApplied ? 2: 1
+                                                )
+                                                .stroke(
+                                                    isAnyFilterApplied ? Color.red : Color.gray
+                                                    )
+                                        )//butotn
+                                    }//hstack
+                                    .padding(8)
+                                    Spacer()
+                                    List{
+                                        ForEach(allData){item in
+                                            
+                                            EachDataLayout(model: item)
+                                                .frame(minWidth:0,maxWidth:.infinity)
+                                                .background(
+                                                    
+                                                    NavigationLink("",
+                                                        destination:
+                                                            ShowDetails(clickedItem: item,downloadRequested: $downloadRequested)
+                                                    )
+                                                    .opacity(0)
+                                                    
+                                                )//inside background
+                                            
+                                            
+                                            //.buttonStyle(PlainButtonStyle())
+                                            
                                         }
-                                        .frame(width: 60, height: 60)
+                                        .padding(0)
+                                        .frame(minWidth:0,maxWidth: .infinity)
+                                    }//list
+                                }//vstack
+                                
+                                if -1 != clickedItemId{
+                                    HStack(alignment:.center){
+                                        Spacer()
+                                        VStack{
+                                            Button(action:editAction,label:{
+                                                Text("Edit")
+                                                    .padding(
+                                                        EdgeInsets(
+                                                            top:8,leading: 60,
+                                                            bottom: 16,trailing: 60
+                                                        )
+                                                    )
+                                            })//button
+                                            .foregroundColor(.white)
+                                            .cornerRadius(4)
+                                        }//vstack
+                                        .background(Color.gray)
+                                        .cornerRadius(8)
+                                        Spacer()
+                                    }//hstack
+                                }//pop-if
+                                
+                                if(isAlreadyDownloaded && isListEmpty){
+                                    
+                                    Text("NO DATA FOUND")
+                                        .font(.custom("AmericanTypewriter", fixedSize:24))
+                                }
+                                
+                                if(!isAlreadyDownloaded ){
+                                    VStack{
+                                        LottieView(fileName:"lottie_loading")
+                                            .frame(width:180,height:90,alignment: .center)
+                                        Spacer()
                                     }
-                                })
+                                    .padding(.top,24)
+                                    .padding(4)
+                                    .cornerRadius(12)
+                                }
+                                
+                                VStack{
+                                    Spacer()
+                                    
+                                    HStack{
+                                        Spacer()
+                                        NavigationLink( destination: InfoActivity()){
+                                            VStack{
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(.red)
+                                                    .frame(width:48,height:48)
+                                            }
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .stroke(lineWidth:1)
+                                                    .stroke(Color.red)
+                                            )
+                                            .padding(.trailing, 12)
+                                        }
+                                            
+                                    }
+                                    
+                                    Button(action:addClicked,label:{
+                                        NavigationLink(destination:AddPage(downloadRequested: $downloadRequested)){
+                                            VStack{
+                                                Image(systemName: "plus")
+                                                    .resizable()
+                                                    .foregroundColor(Color.black)
+                                                    .frame(width:40,height:40)
+                                                
+                                            }
+                                            .padding(6)
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(Color.black,lineWidth:4)
+                                            )
+                                        }
+                                    })
 
-                            }//vstack add
+                                }//vstack add
+                                .padding(4)
+                                
+                                
+                            }//zstack
+                            .navigationBarTitle("Overview", displayMode: .inline)
+                            .toolbar{
+                                
+                                ToolbarItem(placement:.navigationBarTrailing){
+                                
+                                    Button(action: {
+                                        let defaults = UserDefaults.standard;
+                                        defaults.removeObject(forKey: "my_user_id")
+                                        defaults.set(false, forKey: "am_i_logged_in");
+                                            hasLoggedOut = true;
+                                    },
+                                    label: {
+                                        Image(systemName: "power")
+                                            .foregroundColor(.red)
+                                    })
+                                    
+                                }
+                            }
+                        }//navigation-view
+                        .listStyle(GroupedListStyle())
+                        .padding(8)
+                        .onAppear{
+                            downloadData();
+                        }
+                        .onChange(of: downloadRequested, perform: {value in
+                            downloadData()
+                            print("download requested \(downloadRequested)")
+                        })
+                        .onChange(of: filterValue, perform: { value in
+                            applyFilter();
+                            print("filterValue \(filterValue)");
                             
-                            
-                        }//zstack
-                        .navigationBarTitle("Overview", displayMode: .inline)
-                    }//navigation-view
-                    .listStyle(GroupedListStyle())
-                    .padding(8)
-                    .onAppear{
-                        downloadData();
-                    }
-                    .onChange(of: filterValue, perform: { value in
-                        applyFilter();
-                        print("filterValue \(filterValue)");
+                        })
                         
-                    })
-                    
-                }//vstack
-                //}//else
+                    }//vstack
+                }//else
+                
             }//zstack
             .frame(minWidth:0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
             

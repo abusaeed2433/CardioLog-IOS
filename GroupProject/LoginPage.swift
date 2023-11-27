@@ -153,9 +153,9 @@ struct LoginPage: View {
                         
                         VStack(alignment:.leading){
                             Text("Email")
-                                .frame(minHeight:24)
+                                .frame(minHeight:20)
                                 .font(.callout)
-                                .padding(4)
+                                .padding([.horizontal],4)
                             
                             TextField("Enter email",text:self.$email)
                                 .frame(height:48)
@@ -170,9 +170,10 @@ struct LoginPage: View {
                                 )
 
                             Text("Password")
-                                .frame(minHeight:24)
+                                .frame(minHeight:20)
                                 .font(.callout)
-                                .padding(4)
+                                .padding([.horizontal],4)
+                                .padding(.top,4)
                             
                             TextField("Enter password",text:self.$pass)
                                 .frame(height:48)
@@ -205,19 +206,24 @@ struct LoginPage: View {
                         Spacer(minLength: 10)
                         
                         VStack{
-                            Button(action: loginAction, label: {
-                                Text("LOGIN")
-                                    .fontWeight(.semibold)
-                                    .frame(minWidth:0,maxWidth: .infinity)
-                                    .padding()
-                            })
-                            .foregroundColor(.white)
-                            .background(Color.orange)
-                            .cornerRadius(32)
-                            .padding([.horizontal],64)
                             
+                            GeometryReader{ gm in
+                                HStack {
+                                    
+                                    Button(action: loginAction, label: {
+                                        Text("LOGIN")
+                                            .fontWeight(.semibold)
+                                            .frame(minWidth:0,maxWidth: .infinity)
+                                            .padding()
+                                    })
+                                    .frame(width:gm.size.width*0.8)
+                                    .foregroundColor(.white)
+                                    .background(Color.orange)
+                                    .cornerRadius(32)
+                                }
+                                .frame(minWidth: 0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
+                            }
                     
-                            
                             HStack{
                                 Spacer()
                                 
@@ -268,12 +274,12 @@ struct LoginPage: View {
                     }//vstack
                     .padding(24)
                     .cornerRadius(12)
-                    .background(Color.white)
+/*                    .background(Color.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(Color.gray)
                     )
-                    
+ */
                 }
                 
             }//zstack

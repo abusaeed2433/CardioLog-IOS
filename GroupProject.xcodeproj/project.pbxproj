@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40324E9F2B00E60E006396BC /* FullMapActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40324E9E2B00E60E006396BC /* FullMapActivity.swift */; };
+		6812397D2AF58B51004E8684 /* InfoActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6812397C2AF58B50004E8684 /* InfoActivity.swift */; };
 		682202FC2AEA468F00163B0D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682202FB2AEA468F00163B0D /* LocationManager.swift */; };
 		6830DD082AD5E30100CCA9FA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD072AD5E30100CCA9FA /* FirebaseDatabase */; };
 		6830DD0A2AD5E30100CCA9FA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD092AD5E30100CCA9FA /* FirebaseAnalytics */; };
@@ -14,6 +16,8 @@
 		6830DD0E2AD5E30100CCA9FA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD0D2AD5E30100CCA9FA /* FirebaseCrashlytics */; };
 		6830DD102AD5E30100CCA9FA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD0F2AD5E30100CCA9FA /* FirebaseMessaging */; };
 		6830DD122AD5E30100CCA9FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6830DD112AD5E30100CCA9FA /* FirebaseAuth */; };
+		683846FC2AF67D2000579273 /* lottie_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 683846FB2AF67D1F00579273 /* lottie_loading.json */; };
+		683847012AF67EB700579273 /* FullInfoActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683847002AF67EB700579273 /* FullInfoActivity.swift */; };
 		6899E7712AD4208A0017DC8F /* AddPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899E7702AD4208A0017DC8F /* AddPage.swift */; };
 		689BD7F32ADC3E970072FFAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 689BD7F22ADC3E970072FFAB /* GoogleService-Info.plist */; };
 		68B348792AD2A7B70063CECC /* OTPPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B348782AD2A7B70063CECC /* OTPPage.swift */; };
@@ -28,6 +32,9 @@
 		68B827E12AD28B8E00306032 /* GroupProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B827E02AD28B8E00306032 /* GroupProjectUITests.swift */; };
 		68B827F22AD28C3D00306032 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B827F12AD28C3D00306032 /* SplashScreen.swift */; };
 		68B827FA2AD28D2E00306032 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B827F92AD28D2E00306032 /* LoginPage.swift */; };
+		68B938592AF6071F002B1890 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B938582AF6071F002B1890 /* ImageLoader.swift */; };
+		68B938612AF60897002B1890 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B938602AF60897002B1890 /* ImageCache.swift */; };
+		68B938662AF608E2002B1890 /* MyRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B938652AF608E2002B1890 /* MyRemoteImage.swift */; };
 		68BD764C2ADD289100BDD783 /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD764B2ADD289100BDD783 /* SignUpPage.swift */; };
 		68BD76542ADD345000BDD783 /* sign_up_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 68BD76532ADD345000BDD783 /* sign_up_lottie.json */; };
 		68BD76592ADD345A00BDD783 /* forgot_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 68BD76582ADD345A00BDD783 /* forgot_lottie.json */; };
@@ -60,7 +67,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40324E9E2B00E60E006396BC /* FullMapActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMapActivity.swift; sourceTree = "<group>"; };
+		6812397C2AF58B50004E8684 /* InfoActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoActivity.swift; sourceTree = "<group>"; };
 		682202FB2AEA468F00163B0D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		683846FB2AF67D1F00579273 /* lottie_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_loading.json; sourceTree = "<group>"; };
+		683847002AF67EB700579273 /* FullInfoActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoActivity.swift; sourceTree = "<group>"; };
 		6899E7702AD4208A0017DC8F /* AddPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPage.swift; sourceTree = "<group>"; };
 		689BD7F22ADC3E970072FFAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68B348782AD2A7B70063CECC /* OTPPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPPage.swift; sourceTree = "<group>"; };
@@ -81,6 +92,9 @@
 		68B827E22AD28B8E00306032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B827F12AD28C3D00306032 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		68B827F92AD28D2E00306032 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		68B938582AF6071F002B1890 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		68B938602AF60897002B1890 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		68B938652AF608E2002B1890 /* MyRemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemoteImage.swift; sourceTree = "<group>"; };
 		68BD764B2ADD289100BDD783 /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
 		68BD76532ADD345000BDD783 /* sign_up_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sign_up_lottie.json; sourceTree = "<group>"; };
 		68BD76582ADD345A00BDD783 /* forgot_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forgot_lottie.json; sourceTree = "<group>"; };
@@ -154,15 +168,21 @@
 				68F5FC552ADC0AEB00CA151B /* Animation */,
 				68B3488B2AD2AC800063CECC /* HomePage.swift */,
 				68C30F632AEA869E00954D7B /* Status.swift */,
+				40324E9E2B00E60E006396BC /* FullMapActivity.swift */,
+				68B938652AF608E2002B1890 /* MyRemoteImage.swift */,
+				68B938582AF6071F002B1890 /* ImageLoader.swift */,
+				68B938602AF60897002B1890 /* ImageCache.swift */,
 				6899E7702AD4208A0017DC8F /* AddPage.swift */,
 				68B348A02AD2D1DA0063CECC /* ShowDetails.swift */,
 				68B348932AD2B0090063CECC /* HomeActivity.swift */,
+				6812397C2AF58B50004E8684 /* InfoActivity.swift */,
+				683847002AF67EB700579273 /* FullInfoActivity.swift */,
 				68BD9F7E2AE64CF0006EC279 /* EditPage.swift */,
-				68B348782AD2A7B70063CECC /* OTPPage.swift */,
 				682202FB2AEA468F00163B0D /* LocationManager.swift */,
 				68C30F5E2AEA80D700954D7B /* FilterPage.swift */,
 				68B827F92AD28D2E00306032 /* LoginPage.swift */,
 				68BD764B2ADD289100BDD783 /* SignUpPage.swift */,
+				68B348782AD2A7B70063CECC /* OTPPage.swift */,
 				68B827F12AD28C3D00306032 /* SplashScreen.swift */,
 				68B827C32AD28B8D00306032 /* GroupProjectApp.swift */,
 				689BD7F22ADC3E970072FFAB /* GoogleService-Info.plist */,
@@ -206,6 +226,7 @@
 				68BD9F792AE64375006EC279 /* lottie_play.json */,
 				68BD76582ADD345A00BDD783 /* forgot_lottie.json */,
 				68BD76532ADD345000BDD783 /* sign_up_lottie.json */,
+				683846FB2AF67D1F00579273 /* lottie_loading.json */,
 				68F5FC7F2ADC2E6600CA151B /* message_lottie.json */,
 				68F5FC5E2ADC0BAD00CA151B /* LottieView.swift */,
 				68F5FC562ADC0AFE00CA151B /* login_lottie.json */,
@@ -334,6 +355,7 @@
 				68BD76592ADD345A00BDD783 /* forgot_lottie.json in Resources */,
 				68B827C82AD28B8E00306032 /* Assets.xcassets in Resources */,
 				689BD7F32ADC3E970072FFAB /* GoogleService-Info.plist in Resources */,
+				683846FC2AF67D2000579273 /* lottie_loading.json in Resources */,
 				68F5FC572ADC0AFE00CA151B /* login_lottie.json in Resources */,
 				68BD76542ADD345000BDD783 /* sign_up_lottie.json in Resources */,
 				68BD9F7A2AE64376006EC279 /* lottie_play.json in Resources */,
@@ -365,17 +387,23 @@
 				68B827FA2AD28D2E00306032 /* LoginPage.swift in Sources */,
 				68B3488C2AD2AC800063CECC /* HomePage.swift in Sources */,
 				68B348942AD2B0090063CECC /* HomeActivity.swift in Sources */,
+				68B938662AF608E2002B1890 /* MyRemoteImage.swift in Sources */,
 				68C30F5F2AEA80D700954D7B /* FilterPage.swift in Sources */,
 				68B348A12AD2D1DA0063CECC /* ShowDetails.swift in Sources */,
 				6899E7712AD4208A0017DC8F /* AddPage.swift in Sources */,
 				68B827F22AD28C3D00306032 /* SplashScreen.swift in Sources */,
+				40324E9F2B00E60E006396BC /* FullMapActivity.swift in Sources */,
 				68BD764C2ADD289100BDD783 /* SignUpPage.swift in Sources */,
 				68B348792AD2A7B70063CECC /* OTPPage.swift in Sources */,
+				683847012AF67EB700579273 /* FullInfoActivity.swift in Sources */,
+				68B938612AF60897002B1890 /* ImageCache.swift in Sources */,
 				68F5FC5F2ADC0BAD00CA151B /* LottieView.swift in Sources */,
+				6812397D2AF58B51004E8684 /* InfoActivity.swift in Sources */,
 				68F5FC852ADC2E8F00CA151B /* LottieMessage.swift in Sources */,
 				68C30F642AEA869E00954D7B /* Status.swift in Sources */,
 				682202FC2AEA468F00163B0D /* LocationManager.swift in Sources */,
 				68B827C62AD28B8D00306032 /* ContentView.swift in Sources */,
+				68B938592AF6071F002B1890 /* ImageLoader.swift in Sources */,
 				68BD9F7F2AE64CF0006EC279 /* EditPage.swift in Sources */,
 				68B827C42AD28B8D00306032 /* GroupProjectApp.swift in Sources */,
 			);

@@ -29,6 +29,10 @@ struct AddPage: View {
     @State private var pickerDate: Date = Date();
     @State private var pickerTime = Date()
     
+    @State private var focusedIndex:Int = -1;
+    
+    @Binding var downloadRequested: Int64
+    
     private func startDatePicker(){
         allDisabled = true;
         showDatePicker = true;
@@ -39,7 +43,13 @@ struct AddPage: View {
         showTimePicker = true;
     }
     
-    private func onDatePicked(){
+    private func onDatePicked(_ dismissRequest:Bool=false){
+        
+        if(dismissRequest){
+            allDisabled = false
+            showDatePicker = false
+            return
+        }
         
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "dd/MM/yyyy";
@@ -49,7 +59,15 @@ struct AddPage: View {
         showDatePicker = false;
     }
     
-    private func onTimePicked(){
+    private func onTimePicked(_ dismissRequest:Bool=false){
+        
+        if(dismissRequest){
+            allDisabled = false
+            showTimePicker = false
+            return
+        }
+        
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mma"
         time =  formatter.string(from: pickerTime)
@@ -119,6 +137,7 @@ struct AddPage: View {
                     heartRate = "";
                     comment = "";
                     alertMessage = "Data saved successfully";
+                    downloadRequested = Int64(Date().timeIntervalSince1970)
                     isAlert = false;
                 }
             }
@@ -142,28 +161,24 @@ struct AddPage: View {
                         //date
                         VStack(alignment:.leading,spacing:4){
                             Text("Date(dd/MM/yyyy)")
-                                .frame(minHeight:18)
+                                .font(.system(size: 12))
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             
                             Button(action:startDatePicker,label:{
-                                
                                 TextField("01/05/2023",text:self.$date)
-                                    .frame(height:48)
+                                    .frame(height:40)
                                     .textFieldStyle(PlainTextFieldStyle())
                                     .padding([.horizontal],12)
                                     .cornerRadius(4)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color.gray)
-                                    )
-                                    .background(
-                                        Color.init(
-                                            red: 0, green: 50, blue: 0
-                                        )
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .stroke(lineWidth:1)
+                                            .stroke( Color.gray )
                                     )
                                     .foregroundColor(.black)
                                     .disabled(true)
+                                    .multilineTextAlignment(.leading)
                             })
                         }//vstack
                         .padding(8)
@@ -171,27 +186,24 @@ struct AddPage: View {
                         //time
                         VStack(alignment:.leading,spacing:4){
                             Text("Time(hh:mma)")
-                                .frame(minHeight:18)
+                                .font(.system(size: 12))
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             
                             Button(action:startTimePicker,label:{
                                 TextField("11:14PM",text:self.$time)
-                                    .frame(height:48)
+                                    .frame(height:40)
                                     .textFieldStyle(PlainTextFieldStyle())
                                     .padding([.horizontal],12)
                                     .cornerRadius(4)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color.gray)
-                                    )
-                                    .background(
-                                        Color.init(
-                                            red: 0, green: 50, blue: 0
-                                        )
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .stroke(lineWidth:1)
+                                            .stroke( Color.gray )
                                     )
                                     .foregroundColor(.black)
                                     .disabled(true)
+                                    .multilineTextAlignment(TextAlignment.leading)
                             })//button
                             
                         }//vstack
@@ -200,9 +212,9 @@ struct AddPage: View {
                         //sys pressure
                         VStack(alignment:.leading,spacing:4){
                             Text("Sys pressure(mmHg)")
-                                .frame(minHeight:18)
+                                .font(.system(size: 12))
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             TextField("140",text:self.$sysPressure,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -210,18 +222,14 @@ struct AddPage: View {
                                         }
                                     }
                                 )
-                                .frame(height:48)
+                                .frame(height:40)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
                                 .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .keyboardType(.numberPad)
@@ -232,9 +240,9 @@ struct AddPage: View {
                         //dys pressure
                         VStack(alignment:.leading,spacing:4){
                             Text("Dys pressure(mm Hg)")
-                                .frame(minHeight:18)
+                                .font(.system(size: 12))
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             TextField("59",text:self.$dysPressure,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -242,18 +250,14 @@ struct AddPage: View {
                                         }
                                     }
                                 )
-                                .frame(height:48)
+                                .frame(height:40)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
                                 .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .keyboardType(.numberPad)
@@ -264,9 +268,9 @@ struct AddPage: View {
                         // heart rate
                         VStack(alignment:.leading,spacing:4){
                             Text("Heart Rate(BPM)")
-                                .frame(minHeight:18)
+                                .font(.system(size: 12))
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             TextField("105BPM",text:self.$heartRate,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -274,18 +278,14 @@ struct AddPage: View {
                                         }
                                     }
                                 )
-                                .frame(height:48)
+                                .frame(height:40)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
                                 .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .keyboardType(.numberPad)
                                 .foregroundColor(.black)
@@ -295,23 +295,19 @@ struct AddPage: View {
                         
                         //comment
                         VStack(alignment:.leading,spacing:4){
-                            Text("Comment")
-                                .frame(minHeight:18)
+                            Text("Comment(If any)")
+                                .font(.system(size: 12))
                                 .font(.callout)
                                 .padding([.horizontal],4)
                             TextField("Any extra message",text:self.$comment)
-                                .frame(height:48)
+                                .frame(height:40)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
                                 .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .disabled(allDisabled)
@@ -319,14 +315,14 @@ struct AddPage: View {
                         .padding(8)
                         
                         Button(action:saveAction,label:{
-                            Text("Save")
+                            Text("Save Record")
                                 .fontWeight(.semibold)
                                 .frame(minWidth:0,maxWidth: .infinity)
-                                .padding(8)
+                                .padding(10)
                         })
                         .foregroundColor(.white)
                         .background(Color.blue)
-                        .cornerRadius(8)
+                        .cornerRadius(32)
                         .padding(12)
                         .disabled(allDisabled)
                         
@@ -347,15 +343,24 @@ struct AddPage: View {
                     
                     HStack{
                         Spacer()
-                        Button(action: onDatePicked, label: {
-                            Text("OK")
+                        Button(action: {onDatePicked(true)}, label: {
+                            Text("Cancel")
                                 .fontWeight(.semibold)
-                                .padding(12)
+                                .padding(8)
                         })
-                        .foregroundColor(.white)
-                        .background(Color.black)
+                        .foregroundColor(.blue)
                         .cornerRadius(8)
                         .padding([.horizontal],8)
+                        
+                        Button(action: {onDatePicked(false)}, label: {
+                            Text("OK")
+                                .fontWeight(.semibold)
+                                .padding(8)
+                        })
+                        .foregroundColor(.blue)
+                        .cornerRadius(8)
+                        .padding([.horizontal],8)
+                        
                     }//hstack
                 }//vstack
                 .padding(8)
@@ -374,13 +379,22 @@ struct AddPage: View {
                     
                     HStack{
                         Spacer()
-                        Button(action: onTimePicked, label: {
+                        
+                        Button(action: {onTimePicked(true)}, label: {
+                            Text("Cancel")
+                                .fontWeight(.semibold)
+                                .padding(12)
+                        })
+                        .foregroundColor(.blue)
+                        .cornerRadius(8)
+                        .padding([.horizontal],8)
+                        
+                        Button(action: {onTimePicked(false)}, label: {
                             Text("OK")
                                 .fontWeight(.semibold)
                                 .padding(12)
                         })
-                        .foregroundColor(.white)
-                        .background(Color.black)
+                        .foregroundColor(.blue)
                         .cornerRadius(8)
                         .padding([.horizontal],8)
                     }//hstack
@@ -396,33 +410,52 @@ struct AddPage: View {
             
             if(alertMessage != nil){
                 VStack{
-                    VStack{
-                        Text(alertMessage ?? "none")
-                            .frame(minHeight:18)
-                            .font(.custom("AmericanTypewriter", fixedSize:18) )
-                            .foregroundColor( isAlert ? Color.red : Color.black)
-                            .padding(24)
-                            .frame(minWidth:0,maxWidth: .infinity)
-
-                        HStack{
+                    Spacer()
+                    GeometryReader{ gm in
+                        VStack{
                             Spacer()
-                            Button(action: onErrorDismissed, label: {
-                                Text("OK")
-                                    .fontWeight(.semibold)
+                            VStack{
+                                
+                                Image(systemName: "info.circle")
+                                    .resizable()
+                                    .frame(width:32,height:32)
+                                    .foregroundColor(.black)
                                     .padding(12)
-                            })
-                            .foregroundColor(.blue)
-                            .cornerRadius(8)
-                            .padding([.horizontal],8)
-                        }//hstack
-                    }//vstack
-                    .padding(4)
-                    .cornerRadius(16)
-                    .background(Color.white)
+
+                                Text(alertMessage ?? "none")
+                                    .frame(minHeight:18)
+                                    .font(.custom("AmericanTypewriter", fixedSize:20) )
+                                    .foregroundColor( isAlert ? Color.red : Color.black)
+                                    .padding(.bottom,16)
+                                    .frame(minWidth:0,maxWidth: .infinity)
+                            
+                                HStack{
+                                    Button(action: onErrorDismissed, label: {
+                                        Text("OK")
+                                            .fontWeight(.semibold)
+                                            .padding(10)
+                                    })
+                                    .foregroundColor(.white)
+                                    .frame(width: gm.size.width * 0.6)
+                                    .background(isAlert ? Color.orange : Color.green)
+                                    .cornerRadius(24)
+                                    .padding([.horizontal],8)
+                                }//hstack
+                            }//vstack
+                            .padding(16)
+                            .background(Color.white)
+                            .cornerRadius(16)
+                            Spacer()
+                            
+                        }//vstack
+                    }//geometry
+                    
+                    Spacer()
+                    
                 }//vstack
                 .frame(minWidth:0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
                 .padding(36)
-                .background(Color.black.opacity(0.4))
+                .background(Color.black.opacity(0.1))
                 
             }//if- alert
             
@@ -434,6 +467,6 @@ struct AddPage: View {
 
 struct AddPage_Previews: PreviewProvider {
     static var previews: some View {
-        AddPage()
+        AddPage(downloadRequested: .constant(123))
     }
 }

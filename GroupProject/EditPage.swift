@@ -152,7 +152,7 @@ struct EditPage: View {
                             Text("Date(dd/MM/yyyy)")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             
                             Button(action:startDatePicker,label:{
                                 
@@ -160,15 +160,10 @@ struct EditPage: View {
                                     .frame(height:48)
                                     .textFieldStyle(PlainTextFieldStyle())
                                     .padding([.horizontal],12)
-                                    .cornerRadius(4)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color.gray)
-                                    )
-                                    .background(
-                                        Color.init(
-                                            red: 0, green: 50, blue: 0
-                                        )
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .stroke(lineWidth:1)
+                                            .stroke( Color.gray )
                                     )
                                     .foregroundColor(.black)
                                     .disabled(true)
@@ -181,22 +176,17 @@ struct EditPage: View {
                             Text("Time(hh:mma)")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             
                             Button(action:startTimePicker,label:{
                                 TextField("11:14PM",text:self.$time)
                                     .frame(height:48)
                                     .textFieldStyle(PlainTextFieldStyle())
                                     .padding([.horizontal],12)
-                                    .cornerRadius(4)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color.gray)
-                                    )
-                                    .background(
-                                        Color.init(
-                                            red: 0, green: 50, blue: 0
-                                        )
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .stroke(lineWidth:1)
+                                            .stroke( Color.gray )
                                     )
                                     .foregroundColor(.black)
                                     .disabled(true)
@@ -210,7 +200,7 @@ struct EditPage: View {
                             Text("Sys pressure(mmHg)")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             TextField("140",text:self.$sysPressure,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -221,15 +211,10 @@ struct EditPage: View {
                                 .frame(height:48)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
-                                .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .keyboardType(.numberPad)
@@ -242,7 +227,7 @@ struct EditPage: View {
                             Text("Dys pressure(mm Hg)")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
                             TextField("59",text:self.$dysPressure,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -253,15 +238,10 @@ struct EditPage: View {
                                 .frame(height:48)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
-                                .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .keyboardType(.numberPad)
@@ -274,7 +254,8 @@ struct EditPage: View {
                             Text("Heart Rate(BPM)")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
+                            
                             TextField("105BPM",text:self.$heartRate,
                                       onEditingChanged: { isEditing in
                                         if !isEditing {
@@ -285,15 +266,10 @@ struct EditPage: View {
                                 .frame(height:48)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
-                                .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .keyboardType(.numberPad)
                                 .foregroundColor(.black)
@@ -306,20 +282,16 @@ struct EditPage: View {
                             Text("Comment")
                                 .frame(minHeight:18)
                                 .font(.callout)
-                                .padding([.horizontal],4)
+                                .padding([.horizontal],8)
+                            
                             TextField("Any extra message",text:self.$comment)
                                 .frame(height:48)
                                 .textFieldStyle(PlainTextFieldStyle())
                                 .padding([.horizontal],12)
-                                .cornerRadius(4)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.gray)
-                                )
-                                .background(
-                                    Color.init(
-                                        red: 0, green: 50, blue: 0
-                                    )
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(lineWidth:1)
+                                        .stroke( Color.gray )
                                 )
                                 .foregroundColor(.black)
                                 .disabled(allDisabled)
@@ -330,11 +302,11 @@ struct EditPage: View {
                             Text("Update")
                                 .fontWeight(.semibold)
                                 .frame(minWidth:0,maxWidth: .infinity)
-                                .padding(8)
+                                .padding(12)
                         })
                         .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(8)
+                        .background(Color.orange)
+                        .cornerRadius(24)
                         .padding(12)
                         .disabled(allDisabled)
                         
@@ -404,33 +376,52 @@ struct EditPage: View {
             
             if(alertMessage != nil){
                 VStack{
-                    VStack{
-                        Text(alertMessage ?? "none")
-                            .frame(minHeight:18)
-                            .font(.custom("AmericanTypewriter", fixedSize:18) )
-                            .foregroundColor( isAlert ? Color.red : Color.black)
-                            .padding(24)
-                            .frame(minWidth:0,maxWidth: .infinity)
-
-                        HStack{
+                    Spacer()
+                    GeometryReader{ gm in
+                        VStack{
                             Spacer()
-                            Button(action: onErrorDismissed, label: {
-                                Text("OK")
-                                    .fontWeight(.semibold)
+                            VStack{
+                                
+                                Image(systemName: "info.circle")
+                                    .resizable()
+                                    .frame(width:32,height:32)
+                                    .foregroundColor(.black)
                                     .padding(12)
-                            })
-                            .foregroundColor(.blue)
-                            .cornerRadius(8)
-                            .padding([.horizontal],8)
-                        }//hstack
-                    }//vstack
-                    .padding(4)
-                    .cornerRadius(16)
-                    .background(Color.white)
+
+                                Text(alertMessage ?? "none")
+                                    .frame(minHeight:18)
+                                    .font(.custom("AmericanTypewriter", fixedSize:20) )
+                                    .foregroundColor( isAlert ? Color.red : Color.black)
+                                    .padding(.bottom,16)
+                                    .frame(minWidth:0,maxWidth: .infinity)
+                            
+                                HStack{
+                                    Button(action: onErrorDismissed, label: {
+                                        Text("OK")
+                                            .fontWeight(.semibold)
+                                            .padding(10)
+                                    })
+                                    .foregroundColor(.white)
+                                    .frame(width: gm.size.width * 0.6)
+                                    .background(isAlert ? Color.orange : Color.green)
+                                    .cornerRadius(24)
+                                    .padding([.horizontal],8)
+                                }//hstack
+                            }//vstack
+                            .padding(16)
+                            .background(Color.white)
+                            .cornerRadius(16)
+                            Spacer()
+                            
+                        }//vstack
+                    }//geometry
+                    
+                    Spacer()
+                    
                 }//vstack
                 .frame(minWidth:0,maxWidth: .infinity,minHeight: 0,maxHeight: .infinity)
                 .padding(36)
-                .background(Color.black.opacity(0.4))
+                .background(Color.black.opacity(0.1))
                 
             }//if- alert
             

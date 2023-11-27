@@ -47,21 +47,38 @@ struct FilterPage: View {
     
     private func sortBy(_ id:Status) -> Void {
         print("Filter by \(id)");
+        
+        if(sortStatus == id){
+            sortStatus = Status.NONE;
+            return
+        }
         sortStatus = id;
     }
     
     private func filterSys(_ id:Status) -> Void{
         print("sys filter \(id)")
+        if(sysStatus == id){
+            sysStatus = Status.NONE;
+            return
+        }
         sysStatus = id;
     }
     
     private func filterDys(_ id:Status) -> Void{
         print("dys filter \(id)")
+        if(dysStatus == id){
+            dysStatus = Status.NONE;
+            return
+        }
         dysStatus = id;
     }
     
     private func filterHeart(_ id:Status) -> Void{
         print("heart filter \(id)")
+        if(heartStatus == id){
+            heartStatus = Status.NONE;
+            return
+        }
         heartStatus = id;
     }
     
@@ -149,7 +166,7 @@ struct FilterPage: View {
                                     
                                     Text(fromDate)
                                         .foregroundColor(.blue)
-                                        .font(.custom("AmericanTypewriter",fixedSize:12) )
+                                        .font(.custom("AmericanTypewriter",fixedSize:10) )
                                         .bold()
                                     
                                 }//vstack
@@ -175,7 +192,7 @@ struct FilterPage: View {
                                     
                                     Text(toDate)
                                         .foregroundColor(.blue)
-                                        .font(.custom("AmericanTypewriter",fixedSize:11) )
+                                        .font(.custom("AmericanTypewriter",fixedSize:10) )
                                         .bold()
                                     
                                 }//vstack
