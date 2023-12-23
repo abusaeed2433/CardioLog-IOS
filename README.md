@@ -17,11 +17,11 @@ Monitor your blood pressure and heart rate data in a simple, attractive, intuiti
 ## Some of the main screenshoots:
 
 ## App Screenshots
-<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/ss_first_5.png">
-    <img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/ss_first_5.png" />
+<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/ss_first_five.png">
+    <img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/ss_first_five.png" />
 </a>
 
-<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/ss_last_5.png">
-    <img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/ss_last_5.png" />
+<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/ss_last_five.png">
+    <img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/ss_last_five.png" />
 </a>
 
