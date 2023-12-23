@@ -17,6 +17,6 @@ Monitor your blood pressure and heart rate data in a simple, attractive, intuiti
 ## Some of the main screenshoots:
 
 ## App Screenshots
-<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/1_splash_screen.png">
-<img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/1_splash_screen.png" />
+<a href="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/main/ScreenShots/Slide1.jpg">
+<img src="https://raw.githubusercontent.com/abusaeed2433/CardioLog-IOS/master/ScreenShots/Slide1.JPG" />
 </a>
