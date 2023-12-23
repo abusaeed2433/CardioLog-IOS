@@ -29,7 +29,7 @@ struct AddPage: View {
     @State private var pickerDate: Date = Date();
     @State private var pickerTime = Date()
     
-    @State private var focusedIndex:Int = -1;
+    //@State private var focusedIndex:Int = -1;
     
     @Binding var downloadRequested: Int64
     

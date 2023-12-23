@@ -142,7 +142,7 @@ struct ShowDetails: View {
                         let long:Double = data["long"] as? Double ?? -1;
                         
                         let point = MapPoint(
-                            name: "lulu-lulu",
+                            name: "----",
                             coordinate: .init( latitude: lat, longitude: long )
                         )
                         

@@ -50,7 +50,7 @@ struct SignUpPage: View {
     private func onErrorDismissed(){
         
         if( message == "Account created successfully" ){
-            presentationMode.wrappedValue.dismiss(); // back to showdetails
+            presentationMode.wrappedValue.dismiss(); // back to LoginPage
         }
         
         message = nil;
